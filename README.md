@@ -1,18 +1,19 @@
 [![][ButlerImage]][website] 
 
-
-An monolith shopping system based on springboot tech stack with rest API service and freemark backend management GUI.
 DingDing v1.0 (for java 1.8 +)
 -------------------
 
-Java open source e-commerce software
+An monolith and open source e-commerce based on springboot tech stack with rest API service and freemark backend management GUI. 
 
+This prototype can provide the most of common REST APIs for below mudules
+It will be splitted into multiple micro service in another repository using spring cloud tech stack.
 - Shopping cart
-- Catalogue
-- Search
-- Checkout
-- Administration
-- REST API
+- Category
+- Product
+- Order
+- Inventory
+- User
+For fontend web project, it is still in progress status.
 
 See the demo:
 -------------------
@@ -36,23 +37,6 @@ From the command line with Maven installed:
 	$ mvn clean install -Dmaven.test.skip=true
 	
 
-Run the application from Tomcat 
--------------------
-copy sm-shop/target/ROOT.war to tomcat or any other application server deployment dir
-
-Increase heap space to 1024 m or at least 512 m
-
-### Heap space configuration in Tomcat:
-
-
-If you are using Tomcat, edit catalina.bat for windows users or catalina.sh for linux / Mac users
-
-	in Windows
-	set JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=256m" 
-	
-	in Linux / Mac
-	export JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=256m" 
-
 Run the application from Spring boot 
 -------------------
 
@@ -62,14 +46,14 @@ Run the application from Spring boot
 Run the application from Spring boot in eclipse
 -------------------
 
-Right click on com.salesmanager.shop.application.ShopApplication
+Right click on com.hy.micro.service.dingding.DingdingService
 
-run as Java Application
+run as Java Application or springboot 
 
 ### Access the application:
 -------------------
 
-Access the deployed web application at: http://localhost:8080/
+Access the deployed web application at: http://localhost:9600/
 
 Acces the admin section at: http://localhost:8080/admin
 
@@ -77,15 +61,13 @@ Acces the admin section at: http://localhost:8080/admin
 #####password : password
 
 The instructions above will let you run the application with default settings and configurations.
+Of cause, you can change application.yml file to customize yourself configuration.
 Please read the instructions on how to connect to MySQL, configure an email server and configure other subsystems
 
 
 ### Documentation:
 -------------------
-
-Documentation available from the wiki <https://github.com/shopizer-ecommerce/shopizer/wiki>
-
-More documentation is available on shopizer web site here <http://www.shopizer.com>
+TODO
 
 
 
