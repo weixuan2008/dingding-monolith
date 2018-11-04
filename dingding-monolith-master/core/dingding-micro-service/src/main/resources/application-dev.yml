@@ -1,0 +1,56 @@
+server:
+    port: 9600
+spring:
+    application:
+        name: dingding-service
+    cloud:
+        bus:
+            enabled: true
+            trace:
+                enabled: true
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: P@swrd1
+        url: jdbc:mysql://localhost:3306/blooming?characterEncoding=utf-8&userSSL=false
+        username: weixuan
+    rabbitmq:
+        host: localhost
+        password: guest
+        port: 5672
+        username: guest
+    redis:
+        host: 127.0.0.1
+        port: 6379
+    server:
+        context-path: /dingding
+        
+management:
+    endpoints:
+        web:
+            exposure:
+                include: bus-refresh
+order:
+    id:
+        generator:
+            datacenterId: 5
+            workerId: 10
+project:
+    url:
+        config:
+            mpAuthorizeUrl: http://fmx.weixin.gzcstec.com
+            openAuthorizeUrl: http://fmx.weixin.gzcstec.com
+            sell: http://fmx.weixin.gzcstec.com
+            
+wechat:
+    account:
+        config:
+            keyPath: D:/weixin_cert/apiclient_cert.p12
+            mchId: 137945590x
+            mchKey: 0561d7c09b9cc71b00xxxxxxxxxxxx
+            mpAppId: wxa6344813f106bc7a
+            mpAppSecret: 0561d7c09b9cc71b0083e9133e9a903d
+            notify_url: http://gzcstec.com/sell/pay/notify
+            openAppId: wxaf53a107603fccae
+            openAppSecret: 4ca3a5a3fb96f41ff47ec0e65c88e4ce
+            templateIds:
+                orderStatus: uyjvfWUNNxavK_hW_dfNM1noVp-jHXcjadjBcM8BVYY

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.hy.dingding</groupId>
+	<artifactId>dingding-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>dingding-parent</name>
+	<description></description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+
+		<!-- <spring-cloud.version>Finchley.RELEASE</spring-cloud.version> Based 
+			on Spring Boot 2.0.3.RELEASE -->
+
+		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
+		<!-- Based on Spring Boot 2.0.4.RELEASE -->
+
+		<swagger2.version>2.9.2</swagger2.version>
+		<orika.version>1.5.2</orika.version>
+		<docker-maven-plugin.version>1.1.1</docker-maven-plugin.version>
+		<docker.repostory>localhost:5000</docker.repostory>
+		<spring-security-oauth2.version>2.3.3.RELEASE</spring-security-oauth2.version>
+		<weixin-java-tool.version>3.2.0</weixin-java-tool.version>
+		<commons-lang3.version>3.8.1</commons-lang3.version>
+		<best-pay-sdk.version>1.2.0</best-pay-sdk.version>
+	</properties>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.4.RELEASE</version>
+	</parent>
+	
+	<modules>
+		<module>core\dingding-micro-service</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<!--spring cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!--swagger ui -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security.oauth</groupId>
+				<artifactId>spring-security-oauth2</artifactId>
+				<version>${spring-security-oauth2.version}</version>
+			</dependency>
+
+			<!-- weixin java develop sdk, start -->
+			<!-- https://github.com/wechat-group/weixin-java-tools -->
+			<dependency>
+				<groupId>com.github.binarywang</groupId>
+				<artifactId>weixin-java-miniapp</artifactId>
+				<version>${weixin-java-tool.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.binarywang</groupId>
+				<artifactId>weixin-java-pay</artifactId>
+				<version>${weixin-java-tool.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.binarywang</groupId>
+				<artifactId>weixin-java-open</artifactId>
+				<version>${weixin-java-tool.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.binarywang</groupId>
+				<artifactId>weixin-java-mp</artifactId>
+				<version>${weixin-java-tool.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.binarywang</groupId>
+				<artifactId>weixin-java-cp</artifactId>
+				<version>${weixin-java-tool.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>cn.springboot</groupId>
+    			<artifactId>best-pay-sdk</artifactId>
+			    <version>${best-pay-sdk.version}</version>
+			</dependency>
+			<!-- weixin java develop sdk, end -->
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+</project>

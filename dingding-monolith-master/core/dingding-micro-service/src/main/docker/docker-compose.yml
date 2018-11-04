@@ -1,0 +1,58 @@
+version : '2'
+services:
+  mysql:
+    build: mysql
+    container_name: mysql
+    restart: always
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+
+  redis:
+    image: redis:3.2-alpine
+    container_name: redis
+    restart: always
+    ports:
+        - 6379:6379
+        
+  mysqldbserver:
+    container_name: mysqldbserver
+    build:
+      context: .
+      dockerfile: mysqldb-dockerfile
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=testdb"
+      - "MYSQL_ROOT_HOST=%"
+    ports:
+      - "3307:3307"
+    networks:
+      - net-spring-db
+    command: [
+          'mysqld',
+          '--innodb-buffer-pool-size=20M',
+          '--character-set-server=utf8',
+          '--collation-server=utf8_general_ci',
+          '--default-time-zone=+8:00',
+          '--lower-case-table-names=1'
+        ]
+  springappserver:
+    container_name: springappserver
+    build:
+      context: .
+      dockerfile: springapp-dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - net-spring-db
+    volumes:
+      - /vol/development
+    depends_on:
+      - mysqldbserver
+    links:
+      - mysqldbserver
+ 
+networks:
+  net-spring-db:
+    driver: bridge

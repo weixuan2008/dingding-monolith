@@ -1,0 +1,39 @@
+spring:
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: 'true'
+            force: true
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: UTC
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+                format_sql: true
+        show-sql: true
+    output:
+        ansi:
+            enabled: ALWAYS
+    profiles:
+        active: dev
+
+
+hy:
+    connection:
+        password: kyjufskifas2jsfs
+        remoteAddress: 192.168.1.1
+        username: admin
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: debug
+                type:
+                    descriptor:
+                        sql: trace
+            springframework:
+                security: DEBUG

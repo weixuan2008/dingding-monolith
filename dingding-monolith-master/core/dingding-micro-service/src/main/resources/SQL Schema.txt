@@ -1,0 +1,122 @@
+CREATE DATABASE blooming;
+USE blooming;
+
+DROP TABLE IF EXISTS order_master;
+DROP TABLE IF EXISTS order_detail;
+DROP TABLE IF EXISTS product_category;
+DROP TABLE IF EXISTS product_info;
+DROP TABLE IF EXISTS user_info;
+
+-- order master table
+CREATE TABLE order_master(
+    order_id VARCHAR(32) NOT NULL,
+    buyer_id VARCHAR(32) NOT NULL COMMENT 'buyer id',
+    order_amount decimal(8,2) NOT NULL COMMENT 'total amount of order',
+    order_status TINYINT(3) NOT NULL DEFAULT '0' COMMENT 'order status, default is 0 for new',
+    pay_status TINYINT(3) NOT NULL DEFAULT '0' COMMENT 'pay status, default is 0 for unpayed',
+    create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+    PRIMARY KEY (order_id),
+    KEY idx_buyer_id (buyer_id)
+);
+
+
+-- order detail
+CREATE TABLE order_detail(
+    detail_id VARCHAR(32) NOT NULL,
+    order_id VARCHAR(32) NOT NULL,
+    product_id VARCHAR(32) NOT NULL,
+    product_price decimal(8,2) NOT NULL COMMENT 'current price, unit is fen',
+    product_quantity INT NOT NULL COMMENT 'quantity of products',
+    product_icon VARCHAR(512) COMMENT 'icon of product',
+    create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+    PRIMARY KEY (detail_id),
+    KEY idx_order_id (order_id)
+);
+
+
+-- product category
+CREATE TABLE product_category(
+    category_id INT NOT NULL AUTO_INCREMENT,
+    category_name VARCHAR(64) NOT NULL COMMENT 'category name',
+    category_type INT NOT NULL COMMENT 'category number',
+    create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time for this category',
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time for this category',
+    PRIMARY KEY (category_id)
+);
+
+
+-- product information
+CREATE TABLE product_info(
+    product_id VARCHAR(32) NOT NULL,
+    product_name VARCHAR(64) NOT NULL COMMENT 'product name',
+    product_price decimal(8,2) NOT NULL COMMENT 'price',
+    product_stock INT NOT NULL COMMENT 'product stock',
+    product_desc VARCHAR(64) COMMENT 'product description',
+    product_icon VARCHAR(512) COMMENT 'icon for product',
+    product_status TINYINT(3) DEFAULT '0' COMMENT 'product status, 0 is normal and 1 is down',
+    category_type INT NOT NULL COMMENT 'category number',
+    create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+    PRIMARY KEY (product_id)
+);
+
+
+
+-- inventory information
+CREATE TABLE inventory_master(
+    product_id VARCHAR(32) NOT NULL,
+    product_category VARCHAR(32) NOT NULL COMMENT 'product category',
+    vendor_id VARCHAR(32) NOT NULL COMMENT 'vendor id',
+    base_price decimal(8,2) NOT NULL COMMENT 'base price',
+    product_sku INT NOT NULL COMMENT 'product sku',
+    create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+    PRIMARY KEY (product_id)
+);
+
+
+-- vendor information
+CREATE TABLE inventory_vendor(
+    vendor_id VARCHAR(32) NOT NULL,
+    vendor_name VARCHAR(30) NOT NULL COMMENT 'vendor name',
+    vendor_address VARCHAR(64) COMMENT 'vendor address',
+    phone_number VARCHAR(15) COMMENT 'phone number',
+	vendor_city VARCHAR(15) COMMENT 'vendor city',
+	vendor_state VARCHAR(15) COMMENT 'vendor state',
+	vendor_country VARCHAR(30) COMMENT 'vendor country',
+	vendor_zipcode VARCHAR(15) COMMENT 'vendor zipcode',
+	vendor_level INT NOT NULL COMMENT 'vendor level',
+    create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+    PRIMARY KEY (vendor_id)
+);
+
+
+-- user informaton
+CREATE TABLE user_info(
+    user_id VARCHAR(32) NOT NULL,
+    user_name VARCHAR(32) NOT NULL,
+    password VARCHAR(32) NOT NULL,
+	gender BOOLEAN NOT NULL,
+	phone VARCHAR(11) NOT NULL,
+	country VARCHAR(32) NOT NULL,
+	province VARCHAR(32) NOT NULL,
+	city VARCHAR(32) NOT NULL,
+	address VARCHAR(32) NOT NULL,
+	email VARCHAR(32) NOT NULL,
+    open_id VARCHAR(64) NOT NULL COMMENT 'weixin openid',
+	user_role VARCHAR(15) NOT NULL COMMENT 'user role',
+    create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+    PRIMARY KEY (user_id)
+);
+
+
+
+
+
+
+
+

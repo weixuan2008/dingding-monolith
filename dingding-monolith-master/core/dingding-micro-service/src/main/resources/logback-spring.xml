@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<configuration>
+	<!-- Properties for this project -->
+	<property name="APP_ID"
+		value="com.hy.micro.service.dingding.DingdingService" />
+	<property name="LOG_PATH" value="\logs"></property>
+
+	<!-- output to console -->
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-4relative [%thread] %-5level
+				%logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- output to file -->
+	<appender name="FILE_LOGS"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+		</filter>
+		<file>${LOG_PATH}/${APP_ID}/access.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/${APP_ID}/access.log.%d{yyyy-MM-dd}.zip
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-4relative [%thread] %-5level
+				%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- output debug to file -->
+	<appender name="FILE_DEBUG"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${LOG_PATH}/${APP_ID}/access_debug.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/${APP_ID}/access_debug.log.%d{yyyy-MM-dd}.zip
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-4relative [%thread] %-5level
+				%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- output info to file -->
+	<appender name="FILE_INFO"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${LOG_PATH}/${APP_ID}/access_info.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/${APP_ID}/access_info.log.%d{yyyy-MM-dd}.zip
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-4relative [%thread] %-5level
+				%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- output warn to file -->
+	<appender name="FILE_WARN"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>WARN</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${LOG_PATH}/${APP_ID}/access_warn.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/${APP_ID}/access_warn.log.%d{yyyy-MM-dd}.zip
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-4relative [%thread] %-5level
+				%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- output error to file -->
+	<appender name="FILE_ERROR"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${LOG_PATH}/${APP_ID}/access_error.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/${APP_ID}/access_error.log.%d{yyyy-MM-dd}.zip
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-4relative [%thread] %-5level
+				%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- TRACE, DEBUG, INFO, WARN, ERROR, ALL and OFF -->
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE_LOGS" />
+		<appender-ref ref="FILE_DEBUG" />
+		<appender-ref ref="FILE_INFO" />
+		<appender-ref ref="FILE_WARN" />
+		<appender-ref ref="FILE_ERROR" />
+	</root>
+
+	<logger name="org.springframework" level="INFO" />
+
+	<logger name="com.hy.micro.service.luckydraw.repository"
+		level="DEBUG" />
+</configuration>
