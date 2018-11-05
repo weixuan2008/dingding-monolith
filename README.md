@@ -40,7 +40,7 @@ From the command line with Maven installed:
 Run the application from Spring boot 
 -------------------
 
-       $ cd sm-shop
+       $ cd dingding-micro-service
        $ mvn spring-boot:run
 
 Run the application from Spring boot in eclipse
@@ -49,6 +49,13 @@ Run the application from Spring boot in eclipse
 Right click on com.hy.micro.service.dingding.DingdingService
 
 run as Java Application or springboot 
+
+
+Run the application from docker 
+-------------------
+	1. build image from Dockerfile
+	   docker build -t dingding-v1.0
+	2. docker run -d --name dingding -p 9600:9600 -t dingding-v1.0
 
 ### Access the application:
 -------------------
