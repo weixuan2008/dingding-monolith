@@ -65,6 +65,15 @@ Of cause, you can change application.yml file to customize yourself configuratio
 Please read the instructions on how to connect to MySQL, configure an email server and configure other subsystems
 
 
+![image](https://github.com/weixuan2008/dingding-monolith/dingding-monolith-master/core/dingding-micro-service/src/main/resources/static/images/order.PNG)
+
+![image](https://github.com/weixuan2008/dingding-monolith/dingding-monolith-master/core/dingding-micro-service/src/main/resources/static/images/product.PNG)
+
+![image](https://github.com/weixuan2008/dingding-monolith/dingding-monolith-master/core/dingding-micro-service/src/main/resources/static/images/inventory.PNG)
+
+![image](https://github.com/weixuan2008/dingding-monolith/dingding-monolith-master/core/dingding-micro-service/src/main/resources/static/images/vendor.PNG)
+
+
 ### Documentation:
 -------------------
 TODO
