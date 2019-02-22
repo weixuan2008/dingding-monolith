@@ -3,7 +3,7 @@
 DingDing v1.0 (for java 1.8 +)
 -------------------
 
-An monolith and open source e-commerce based on springboot tech stack with rest API service and freemark backend management GUI. 
+A monolith and open source e-commerce based on springboot tech stack with rest API service and freemark backend management GUI. 
 
 This prototype can provide the most of common REST APIs for below mudules
 It will be splitted into multiple micro service in another repository using spring cloud tech stack.
